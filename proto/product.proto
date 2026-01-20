@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "github.com/rhrashal/go-crud/proto";  // Use your actual module name from go.mod
+
+// Product model
+message Product {
+  uint32 id = 1;          // GORM uses uint for ID
+  string name = 2;
+  string description = 3;
+  double price = 4;
+}
+
+// Requests and Responses
+message CreateProductRequest {
+  Product product = 1;
+}
+message CreateProductResponse {
+  uint32 id = 1;  // Returns the created ID
+}
+
+message GetProductRequest {
+  uint32 id = 1;
+}
+message GetProductResponse {
+  Product product = 1;
+}
+
+message UpdateProductRequest {
+  Product product = 1;  // Full product with updated fields
+}
+message UpdateProductResponse {
+  Product product = 1;  // Returns updated product
+}
+
+message DeleteProductRequest {
+  uint32 id = 1;
+}
+message DeleteProductResponse {
+  bool success = 1;
+}
+
+message ListProductsRequest {}  // Empty for listing all
+message ListProductsResponse {
+  repeated Product products = 1;
+}
+
+// Service definition
+service ProductService {
+  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse);
+  rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+  rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse);
+  rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
+  rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
+}
