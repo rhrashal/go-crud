@@ -2,14 +2,14 @@
 # ────────────────────────────────────────────────
 # Option A: Recommended - simplest & cleanest
 # Just use this one line and comment out the rest
-DB_URL=postgresql://postgres:abcd@localhost:5432/myappdb?sslmode=disable&TimeZone=Asia/Dhaka
+DB_URL=postgresql://postgres:password@localhost:5432/mydb?sslmode=disable&TimeZone=Asia/Dhaka
 
 # ────────────────────────────────────────────────
 # Option B: individual variables (used if DB_URL is missing)
 # DB_HOST=localhost
 # DB_USER=postgres
-# DB_PASSWORD=abcd
-# DB_NAME=myappdb
+# DB_PASSWORD=password
+# DB_NAME=mydb
 # DB_PORT=5432
 
 # ────────────────────────────────────────────────
